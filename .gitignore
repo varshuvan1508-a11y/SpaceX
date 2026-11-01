@@ -1,0 +1,13 @@
+
+# Compiled Java files
+*.class
+
+# Local SQLite database
+spacex.db
+
+# IDE and operating system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

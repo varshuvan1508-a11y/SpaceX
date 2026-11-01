@@ -1,0 +1,51 @@
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        JFrame window = new JFrame("SpaceX");
+        CardLayout cardLayout = new CardLayout();
+        JPanel screens = new JPanel(cardLayout);
+
+        // Create the menu screen
+        JPanel menuPanel = new JPanel(new GridLayout(3, 1, 10, 10));
+        menuPanel.setBackground(new Color(10, 15, 35));
+
+        JLabel title = new JLabel("SpaceX", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 48));
+        title.setForeground(Color.CYAN);
+
+        JLabel tagline = new JLabel(
+            "Do you dare to defeat Shiva...",
+            SwingConstants.CENTER
+        );
+        tagline.setFont(new Font("Arial", Font.ITALIC, 20));
+        tagline.setForeground(Color.WHITE);
+
+        JButton startButton = new JButton("START GAME");
+
+        menuPanel.add(title);
+        menuPanel.add(tagline);
+        menuPanel.add(startButton);
+
+        // Create a temporary game screen
+        GamePanel gamePanel = new GamePanel();
+        // Register both screens
+        screens.add(menuPanel, "MENU");
+        screens.add(gamePanel, "GAME");
+
+        // Switch screens when Start is clicked
+        startButton.addActionListener(event -> {
+            cardLayout.show(screens, "GAME");
+        });
+
+        window.add(screens);
+        window.setSize(800, 500);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+    }
+}
